@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width" />
+		
+		<title>Lista de tarefas</title>
+		
+		<link rel="stylesheet" href="../lib/bootstrap/bootstrap.css" >
+		<link rel="stylesheet" href="../lib/bootstrap/bootstrap-theme.css">
+	</head>
+	<body>
+		<div class="panel panel-default" style="margin: 10px">
+			<div class="panel-heading">
+				<h1 class="panel-title">Lista de de tarefas</h1>
+			</div>
+			<div class="panel-body">
+				<form class="form-inline" method="POST" th:object="${task}" th:action="@{/tasks}" style="margin: 20px 0">
+					<div class="form-group">
+						<input type="text" class="form-control"	placeholder="Título" th:field="*{title}" />
+						<input type="text" class="form-control"	placeholder="Descrição" th:field="*{description}" />
+						<input type="checkbox" class="form-control"	th:field="*{conclude}" />
+						<button type="submit" class="btn btn-primary">Adicionar</button>
+					</div>
+				</form>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Título</th>
+							<th>Concluído</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="task : ${tasks}">
+							<td th:text="${task.title}"></td>
+							<td th:text="${task.concludeString}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

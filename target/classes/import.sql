@@ -1,0 +1,3 @@
+INSERT INTO task(id, title, description, registered, conclude) VALUES(1, 'Teste 1', 'Descrição do teste 1', '2017-10-01 01:00:00', false);
+INSERT INTO task(id, title, description, registered, conclude) VALUES(2, 'Teste 2', 'Descrição do teste 2', '2017-10-02 02:00:00', false);
+INSERT INTO task(id, title, description, registered, conclude) VALUES(3, 'Teste 3', 'Descrição do teste 3', '2017-10-03 03:00:00', false);
