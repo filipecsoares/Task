@@ -7,37 +7,47 @@
 		
 		<title>Lista de tarefas</title>
 		
-		<link rel="stylesheet" href="../lib/bootstrap/bootstrap.css" >
-		<link rel="stylesheet" href="../lib/bootstrap/bootstrap-theme.css">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+    	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div class="panel panel-default" style="margin: 10px">
 			<div class="panel-heading">
-				<h1 class="panel-title">Lista de de tarefas</h1>
+				<h1 class="panel-title" align="center">Lista de tarefas</h1>
 			</div>
+			<div class="panel">
+            	<a class="btn btn-success" th:href="@{/add/}" >Adicionar</a>
+        	</div>
 			<div class="panel-body">
-				<form class="form-inline" method="POST" th:object="${task}" th:action="@{/tasks}" style="margin: 20px 0">
-					<div class="form-group">
-						<input type="text" class="form-control"	placeholder="Título" th:field="*{title}" />
-						<input type="text" class="form-control"	placeholder="Descrição" th:field="*{description}" />
-						<input type="checkbox" class="form-control"	th:field="*{conclude}" />
-						<button type="submit" class="btn btn-primary">Adicionar</button>
-					</div>
-				</form>
-				<table class="table">
+			<div class="table-responsive">
+				<table class="table table-striped">
 					<thead>
 						<tr>
+							<th>Ações</th>
 							<th>Título</th>
+							<th>Cadastramento</th>
+							<th>Última edição</th>
+							<th>Conclusão</th>
 							<th>Concluído</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="task : ${tasks}">
+							<td>
+								<div class="btn-group pull-left">
+                                    <a class="btn btn-sm btn-primary" th:href="@{/edit/{id}(id=${task.id})}" >Editar</a>
+                                    <a class="delete btn btn-sm btn-danger" th:href="@{/delete/{id}(id=${task.id})}">Excluir</a>
+                               </div>
+							</td>
 							<td th:text="${task.title}"></td>
+							<td th:text="${#dates.format(task.registered, 'dd/MM/yyyy hh:mm')}"></td>
+							<td th:text="${#dates.format(task.edited, 'dd/MM/yyyy hh:mm')}"></td>
+							<td th:text="${#dates.format(task.concluded, 'dd/MM/yyyy hh:mm')}"></td>
 							<td th:text="${task.concludeString}"></td>
 						</tr>
 					</tbody>
 				</table>
+			</div>
 			</div>
 		</div>
 	</body>

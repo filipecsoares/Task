@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Task implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -21,6 +23,7 @@ public class Task implements Serializable {
 
 	private String description;
 
+	@DateTimeFormat(pattern = "dd-MM-yyyy hh:mm")
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date registered;
 

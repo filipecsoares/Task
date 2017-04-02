@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Cadastro de Tarefas</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"></link>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="panel panel-default jumbotron">
+    	<div class="container" style="border: solid 1px black;">
+        <div class="panel-heading">
+            <strong>Cadastro de Tarefa</strong>
+        </div>
+        <div class="panel-body">
+                <div class="form-group">
+                    <form class="form-group" method="POST" th:object="${task}" th:action="@{/save}" style="margin: 20px 0">
+						<div class="form-group">
+							<input id="id" type="hidden" th:field="*{id}" />
+							<label>Cadastramento</label><br />
+							<input type="datetime" name="registered" class="form-control input-sm" th:field="*{registered}" readonly="readonly"/><br />
+							
+							<label>Título</label>
+							<input type="text" class="form-control input-sm"	placeholder="Título" th:field="*{title}" autofocus="autofocus" />
+							<label>Descrição</label>
+							<textarea class="form-control input-sm" th:field="*{description}" cols="5" rows="5" placeholder="Informe a descrição"></textarea>
+							<div class="form-group row">
+								<label>Marcar como concluído: </label>
+								<input type="checkbox" th:field="*{conclude}" />
+							</div>
+							
+							<br />
+							<div class="form-group row">
+	                    		<button type="submit" class="btn btn-primary">Salvar</button>
+	                    		<a th:href="@{/}" class="btn btn-default">Cancelar</a>
+	                		</div>
+						</div>
+					</form>
+                </div>
+                <div class="panel-body">
+        	</div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
