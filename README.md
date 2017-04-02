@@ -10,7 +10,7 @@ Banco de dados MySql, DataBase: tasklist, user: root, senha: root. Configurado n
 
 Tecnologias:
 Back-end:
-Spring Boot, Spring MVC, Spring Data JPA, Hibernate, Spring Security, Maven, MySql;
+Spring Boot, Spring MVC, Spring Data JPA, Hibernate, Maven, MySql;
 
 Front-end:
 Bootstrap, Thymeleaf;
